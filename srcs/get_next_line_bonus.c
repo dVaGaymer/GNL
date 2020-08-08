@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alopez-g <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/15 16:30:09 by alopez-g          #+#    #+#             */
-/*   Updated: 2020/02/26 02:44:22 by alopez-g         ###   ########.fr       */
+/*   Updated: 2020/02/28 22:10:52 by alopez-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,28 @@
 
 int	get_next_line(int fd, char **line)
 {
-	static char	*prev;
+	static char	*prev[4096];
 	char		*aux;
 	int			cnt;
 	char		*temp;
 
 	aux = NULL;
-	if ((read(fd, aux, 0) < 0 || fd < 0 || BUFFER_SIZE <= 0 || !line)
-			|| !(aux = malloc(BUFFER_SIZE + 1)))
+	if ((read(fd, aux, 0) < 0 || fd < 0 || BUFFER_SIZE <= 0 || !line) ||
+			!(aux = malloc(BUFFER_SIZE + 1)))
 		return (-1);
-	prev = !(prev) ? ft_strdup("") : prev;
-	while (!(ft_strchr(prev, 10)))
+	prev[fd] = !(prev[fd]) ? ft_strdup("") : prev[fd];
+	while (!(ft_strchr(prev[fd], 10)))
 	{
 		if (!(cnt = read(fd, aux, BUFFER_SIZE)))
-			return (eof(&prev, &aux, line));
+			return (eof(&prev[fd], &aux, line));
 		*(aux + cnt) = 0;
-		temp = prev;
-		prev = ft_strjoin(prev, aux);
+		temp = prev[fd];
+		prev[fd] = ft_strjoin(prev[fd], aux);
 		free(temp);
 	}
-	copyline(prev, line);
-	temp = prev;
-	prev = ft_strdup(ft_strchr(prev, 10) + 1);
+	copyline(prev[fd], line);
+	temp = prev[fd];
+	prev[fd] = ft_strdup(ft_strchr(prev[fd], 10) + 1);
 	free(temp);
 	free(aux);
 	return (1);
