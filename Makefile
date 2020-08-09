@@ -6,7 +6,7 @@
 #    By: alopez-g <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/07/07 17:46:30 by alopez-g          #+#    #+#              #
-#    Updated: 2020/08/09 23:44:09 by alopez-g         ###   ########.fr        #
+#    Updated: 2020/08/10 00:16:08 by alopez-g         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,9 +14,12 @@
 
 GNL_DIR		=	srcs/
 LIBFT_DIR	=	srcs/Libft/
+ifneq "${VAR_LIBFT_DIR}" ""
+LIBFT_DIR 	=	${VAR_LIBFT_DIR}
+endif
 
 GNL_INC		=	includes/
-LIBFT_INC	=	srcs/Libft/includes/
+LIBFT_INC	=	${LIBFT_DIR}includes/s
 
 SRCS	=	${GNL_DIR}get_next_line.c
 OBJS	=	$(patsubst %.c, %.o, ${SRCS})
