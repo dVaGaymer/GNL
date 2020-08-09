@@ -6,11 +6,11 @@
 /*   By: alopez-g <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/15 16:30:09 by alopez-g          #+#    #+#             */
-/*   Updated: 2020/02/28 22:10:52 by alopez-g         ###   ########.fr       */
+/*   Updated: 2020/08/09 23:22:50 by alopez-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 int	get_next_line(int fd, char **line)
 {
