@@ -10,10 +10,11 @@
 #                                                                              #
 # **************************************************************************** #
 
-GNL_INC		=	includes/
+GNL_INC		=	${GNL_DIR}includes/
 LIBFT_INC	=	${LIBFT_DIR}includes/
 
 SRCS_DIR	=	${GNL_DIR}srcs/
+
 SRCS		=	${SRCS_DIR}get_next_line.c
 OBJS		=	$(patsubst %.c, %.o, ${SRCS})
 

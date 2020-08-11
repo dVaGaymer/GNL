@@ -1,5 +1,6 @@
 GNL_DIR=./
 export GNL_DIR
 
-LIBFT_DIR=srcs/Libft/
+#Add absolute path here
+LIBFT_DIR=/Users/dvagaymer/Documents/GNL/srcs/Libft/
 export LIBFT_DIR
