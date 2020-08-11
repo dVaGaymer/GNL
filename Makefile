@@ -13,14 +13,15 @@
 GNL_INC		=	includes/
 LIBFT_INC	=	${LIBFT_DIR}includes/
 
-SRCS	=	${GNL_DIR}get_next_line.c
-OBJS	=	$(patsubst %.c, %.o, ${SRCS})
+SRCS_DIR	=	${GNL_DIR}srcs/
+SRCS		=	${SRCS_DIR}get_next_line.c
+OBJS		=	$(patsubst %.c, %.o, ${SRCS})
 
 LIBFT_A		=	${LIBFT_DIR}libft.a
 NAME		=	libgnl.a
 
 %.o : %.c
-				clang -Wall -Werror -Wextra -I $(GNL_INC) -I $(LIBFT_INC) -c $< -o $@
+			clang -Wall -Werror -Wextra -I $(GNL_INC) -I $(LIBFT_INC) -c $< -o $@
 
 ${NAME}:		${OBJS}
 				make -C ${LIBFT_DIR}
